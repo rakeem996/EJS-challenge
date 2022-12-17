@@ -96,15 +96,6 @@ app.get("/post/:postName",function(req,res){
       }
     }
   })
-  // posts.forEach(function(post){
-  //   const storedTitle = _.lowerCase(post.title);
-  //   if(storedTitle == requestedTitle){
-  //     res.render("post",{Title:post.title , content:post.content})
-  //   }
-  //   else{
-  //     console.log("not a match");
-  //   }
-  // });
 });
 
 //making a post request to compose page to get the input text 
@@ -119,13 +110,18 @@ app.post("/compose",function(req,res){
 
   newBlog.save();
   res.redirect("/");
-  // const post = {
-  // };
-
-  // posts.push(post);
-  // res.redirect("/");
 })
 
+app.post("/delete",function(req,res){
+  const postId = req.body.checkbox;
+  Blog.findByIdAndDelete(postId , function(err,resPost){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("/");
+    }
+  });
+})
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");

@@ -4,8 +4,17 @@
 <p><%= homeStartingContent %></p>
 
 <% posts.forEach(function(post){ %>
-    <h2><%= post.blogTitle %></h2>
-    <p><%= post.article.substring(0,100)+"..." %> <a href="post/<%= post.blogTitle %>">Read more</a> </p>
+    
+    <form action="/delete" method="post">
+        <div class="inlineHeader">
+            <input id="cb" type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%= post._id %>">
+            <div  class="post1">
+                <h2><%= post.blogTitle %></h2>
+                <p><%= post.article.substring(0,100)+"..." %> <a href="post/<%= post.blogTitle %>"> Read more </a></p>
+            </div>
+        </div>
+    </form>
+
 <% }) %>
 
 

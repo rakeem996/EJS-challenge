@@ -33,3 +33,20 @@
 	font-size: 12px;
   color: #fff;
 }
+
+.inlineHeader{
+    display: flex;
+    align-items: baseline;
+}
+
+#cb{
+    margin-right: 10px;
+}
+
+input[id=cb]:checked~div.post1{
+    text-decoration: line-through;
+}
+
+/* input[id=cb]:checked~p.post{
+    display: none;
+} */
